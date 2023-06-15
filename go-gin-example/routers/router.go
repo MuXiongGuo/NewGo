@@ -2,15 +2,21 @@
 package routers
 
 import (
+	_ "github.com/EGGYC/go-gin-example/docs"
 	"github.com/EGGYC/go-gin-example/middleware/jwt"
 	"github.com/EGGYC/go-gin-example/pkg/setting"
 	"github.com/EGGYC/go-gin-example/routers/api"
 	"github.com/EGGYC/go-gin-example/routers/api/v1"
 	"github.com/gin-gonic/gin"
+
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func InitRouter() *gin.Engine {
 	r := gin.New()
+
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler)) // swagger api 文档
 
 	r.Use(gin.Logger())
 

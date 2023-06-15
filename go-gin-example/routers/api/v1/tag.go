@@ -49,8 +49,14 @@ func GetTags(c *gin.Context) {
 //util.GetPage保证了各接口的page处理是一致的
 //c *gin.Context是Gin很重要的组成部分，可以理解为上下文，它允许我们在中间件之间传递变量、管理流、验证请求的JSON和呈现JSON响应
 
-// AddTag 新增文章标签
-func AddTag(c *gin.Context) {
+// @Summary 新增文章标签
+// @Produce  json
+// @Param name query string true "Name"
+// @Param state query int false "State"
+// @Param created_by query int false "CreatedBy"
+// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+// @Router /api/v1/tags [post]
+func AddTag(c *gin.Context) { // AddTag 新增文章标签
 	name := c.Query("name")
 	state := com.StrTo(c.DefaultQuery("state", "0")).MustInt()
 	createdBy := c.Query("created_by")
@@ -79,8 +85,15 @@ func AddTag(c *gin.Context) {
 	})
 }
 
-// EditTag 修改文章标签
-func EditTag(c *gin.Context) {
+// @Summary 修改文章标签
+// @Produce  json
+// @Param id path int true "ID"
+// @Param name query string true "ID"
+// @Param state query int false "State"
+// @Param modified_by query string true "ModifiedBy"
+// @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
+// @Router /api/v1/tags/{id} [put]
+func EditTag(c *gin.Context) { // EditTag 修改文章标签
 	id := com.StrTo(c.Param("id")).MustInt()
 	name := c.Query("name")
 	modifiedBy := c.Query("modified_by")
@@ -124,8 +137,11 @@ func EditTag(c *gin.Context) {
 	})
 }
 
-// DeleteTag 删除文章标签
-func DeleteTag(c *gin.Context) {
+// @Summary Delete article tag
+// @Produce  json
+// @Param id path int true "ID"
+// @Router /api/v1/tags/{id} [delete]
+func DeleteTag(c *gin.Context) { // DeleteTag 删除文章标签
 	id := com.StrTo(c.Param("id")).MustInt()
 
 	valid := validation.Validation{}

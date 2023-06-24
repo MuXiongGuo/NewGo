@@ -28,7 +28,7 @@ func GetTags(c *gin.Context) {
 
 	var state int = -1
 	if arg := c.Query("state"); arg != "" {
-		state = com.StrTo(arg).MustInt()
+		state = com.StrTo(arg).MustInt() // 工具包 str先转化同等的 Strto 再调用已经实现的函数来转INT
 		maps["state"] = state
 	}
 

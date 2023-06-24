@@ -1,11 +1,5 @@
 package models
 
-import (
-	"time"
-
-	"github.com/jinzhu/gorm"
-)
-
 // Article 我们创建了一个Article struct {}，与Tag不同的是，Article多了几项，如下：
 // Tag字段，实际是一个嵌套的struct，它利用TagID与Tag模型相互关联，在执行查询的时候，能够达到Article、Tag关联查询的功能
 // time.Now().Unix() 返回当前的时间戳
@@ -86,14 +80,15 @@ func DeleteArticle(id int) bool {
 	return true
 }
 
-func (article *Article) BeforeCreate(scope *gorm.Scope) error {
-	scope.SetColumn("CreatedOn", time.Now().Unix())
-
-	return nil
-}
-
-func (article *Article) BeforeUpdate(scope *gorm.Scope) error {
-	scope.SetColumn("ModifiedOn", time.Now().Unix())
-
-	return nil
-}
+// ***已经有了回调函数 所以不再需要了***
+//func (article *Article) BeforeCreate(scope *gorm.Scope) error {
+//	scope.SetColumn("CreatedOn", time.Now().Unix())
+//
+//	return nil
+//}
+//
+//func (article *Article) BeforeUpdate(scope *gorm.Scope) error {
+//	scope.SetColumn("ModifiedOn", time.Now().Unix())
+//
+//	return nil
+//}

@@ -92,3 +92,10 @@ func DeleteArticle(id int) bool {
 //
 //	return nil
 //}
+
+// CleanAllArticle 用于corn相关操作
+func CleanAllArticle() bool {
+	db.Unscoped().Where("deleted_on != ? ", 0).Delete(&Article{})
+
+	return true
+}

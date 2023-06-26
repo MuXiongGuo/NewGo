@@ -85,3 +85,10 @@ func EditTag(id int, data interface{}) bool {
 //
 //	return nil
 //}
+
+// CleanAllTag 用于corn包相关操作
+func CleanAllTag() bool {
+	db.Unscoped().Where("deleted_on != ? ", 0).Delete(&Tag{})
+
+	return true
+}

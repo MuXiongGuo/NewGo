@@ -2,6 +2,7 @@ package api
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 
@@ -50,6 +51,9 @@ func UploadImage(c *gin.Context) {
 			}
 		}
 	}
+
+	// 延长时间5s  测试 上传过程中 关闭会不会影响它  测试成功 不会影响!
+	time.Sleep(5 * time.Second)
 
 	c.JSON(http.StatusOK, gin.H{
 		"code": code,

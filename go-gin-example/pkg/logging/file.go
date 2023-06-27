@@ -24,7 +24,7 @@ func getLogFileName() string {
 }
 
 func openLogFile(fileName, filePath string) (*os.File, error) {
-	dir, err := os.Getwd()
+	dir, err := os.Getwd() // 相对路径和绝对路径都可以哦 用相对就是工作目录为根 绝对就是多个前缀
 	if err != nil {
 		return nil, fmt.Errorf("os.Getwd err: %v", err)
 	}

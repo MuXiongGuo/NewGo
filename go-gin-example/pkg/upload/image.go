@@ -70,7 +70,7 @@ func CheckImage(src string) error {
 	if err != nil {
 		return fmt.Errorf("os.Getwd err: %v", err)
 	}
-
+	// 相对绝对都可以 相对格式为 runtime/logs/images
 	err = file.IsNotExistMkDir(dir + "/" + src)
 	if err != nil {
 		return fmt.Errorf("file.IsNotExistMkDir err: %v", err)

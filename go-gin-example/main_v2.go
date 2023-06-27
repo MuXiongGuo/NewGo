@@ -4,10 +4,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/EGGYC/go-gin-example/models"
+	"github.com/EGGYC/go-gin-example/pkg/logging"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
+	//"syscall"
 	"time"
 
 	"github.com/EGGYC/go-gin-example/pkg/setting"
@@ -15,13 +18,16 @@ import (
 )
 
 func main() {
+	setting.Setup()
+	models.Setup()
+	logging.Setup()
 	router := routers.InitRouter()
 
 	s := &http.Server{
-		Addr:           fmt.Sprintf(":%d", setting.HTTPPort),
+		Addr:           fmt.Sprintf(":%d", setting.ServerSetting.HttpPort),
 		Handler:        router,
-		ReadTimeout:    setting.ReadTimeout,
-		WriteTimeout:   setting.WriteTimeout,
+		ReadTimeout:    setting.ServerSetting.ReadTimeout,
+		WriteTimeout:   setting.ServerSetting.WriteTimeout,
 		MaxHeaderBytes: 1 << 20,
 	}
 

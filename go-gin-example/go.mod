@@ -4,11 +4,13 @@ go 1.19
 
 require (
 	github.com/astaxie/beego v1.12.3
+	github.com/boombuler/barcode v1.0.1
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.9.0
 	github.com/go-ini/ini v1.67.0
+	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0
+	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/jinzhu/gorm v1.9.16
-	github.com/robfig/cron v1.2.0
 	github.com/swaggo/files v1.0.1
 	github.com/swaggo/gin-swagger v1.6.0
 	github.com/swaggo/swag v1.16.1
@@ -45,6 +47,7 @@ require (
 	github.com/ugorji/go/codec v1.2.11 // indirect
 	golang.org/x/arch v0.3.0 // indirect
 	golang.org/x/crypto v0.10.0 // indirect
+	golang.org/x/image v0.8.0 // indirect
 	golang.org/x/net v0.11.0 // indirect
 	golang.org/x/sys v0.9.0 // indirect
 	golang.org/x/text v0.10.0 // indirect
